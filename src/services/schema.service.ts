@@ -1,4 +1,5 @@
 import { ContextFactory } from '@middlewares/context';
+import { AnswerResolver } from '@resolvers/answer.resolver';
 import { CarreerResolver } from '@resolvers/carreer.resolver';
 import { CityResolver } from '@resolvers/city.resolver';
 import { SchoolResolver } from '@resolvers/school.resolver';
@@ -28,6 +29,7 @@ export class SchemaService {
                 CityResolver,
                 SchoolResolver,
                 CarreerResolver,
+                AnswerResolver,
             ],
             container: { get: (theClass) => container.resolve(theClass) },
         });

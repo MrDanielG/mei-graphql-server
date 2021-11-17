@@ -34,10 +34,10 @@ export class CarreerResolver {
         return this.carreerSrv.findWhere({ name });
     }
 
-    //     @Query(() => [Carreer], { nullable: true })
-    //     async carreerBySchoolId(@Arg('id') id: string) {
-    //         return this.carreerSrv.search(`school: ${id}`);
-    //     }
+    @Query(() => [Carreer], { nullable: true })
+    async carreerBySchoolId(@Arg('id') id: string) {
+        return this.carreerSrv.search(id);
+    }
 
     @FieldResolver()
     async school(@Root() carreer: DocumentType<Carreer>, @Ctx() ctx: Context) {

@@ -44,7 +44,7 @@ export class Carreer {
 }
 
 @InputType({
-    description: 'Partial Carreer data used as query or mutation input.',
+    description: 'Partial Carreer data used as query or mutation input',
 })
 export class CarreerDataInput implements Partial<Carreer> {
     @Field({ nullable: false })
