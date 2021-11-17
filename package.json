@@ -39,6 +39,7 @@
         "start:nodemon": "nodemon -w src -e ts,js -x ts-node --files --transpile-only -r tsconfig-paths/register ./src/index.ts",
         "start:dev": "ts-node --files --transpile-only -r tsconfig-paths/register ./src/index.ts",
         "start:prod": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/src/index.js",
-        "depgraph": "depcruise --include-only \"^src/.*\" --config .dependency-cruiser.js --output-type dot src | dot -T svg > dep.svg"
+        "depgraph": "depcruise --include-only \"^src/.*\" --config .dependency-cruiser.js --output-type dot src | dot -T svg > dep.svg",
+        "migrations:clean": "ts-node src/utils/initDatabase.ts down --all"
     }
 }

@@ -5,7 +5,7 @@ import { Field, ID, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'Estado de la republica' })
 export class State {
-    @Field((type) => ID, {
+    @Field(() => ID, {
         description: 'Identificador del estado de la republica',
     })
     readonly _id: string;
@@ -15,13 +15,14 @@ export class State {
     name: string;
 
     @prop({ required: true })
-    @Field((type) => MapBounds, {
+    @Field(() => MapBounds, {
         description:
             'Area geografica rectangular que define las delimitaciones del estado.',
     })
     bounds: MapBounds;
 
     @prop({ ref: () => 'City', default: [] })
+    // @Field(() => [City])
     cities: Ref<City>[];
 
     @prop({ default: false })

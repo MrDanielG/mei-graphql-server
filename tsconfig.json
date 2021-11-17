@@ -26,6 +26,7 @@
         "experimentalDecorators": true,
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
+        "resolveJsonModule": true,
         "baseUrl": "./",
         "rootDir": "src",
         "paths": {
@@ -38,7 +39,9 @@
             "@middlewares": ["src/middlewares"],
             "@middlewares/*": ["src/middlewares/*"],
             "@utils": ["src/utils"],
-            "@utils/*": ["src/utils/*"]
+            "@utils/*": ["src/utils/*"],
+            "@data": ["src/data"],
+            "@data/*": ["src/data/*"]
         }
     },
     "exclude": ["**/node_modules", "**/.*/"],
