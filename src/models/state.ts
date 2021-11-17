@@ -32,3 +32,4 @@ export class State {
 }
 
 export const StateModel = getModelForClass(State);
+export type StateModelType = typeof StateModel;
