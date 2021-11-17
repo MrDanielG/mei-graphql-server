@@ -5,7 +5,7 @@ import { Field, ID, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'Ciudad dentro de un estado de la republica' })
 export class City {
-    @Field((type) => ID, { description: 'Identificador de la ciudad' })
+    @Field(() => ID, { description: 'Identificador de la ciudad' })
     readonly _id: string;
 
     @prop({ required: true })
@@ -16,7 +16,7 @@ export class City {
     state?: Ref<State>;
 
     @prop({ required: true, type: MapBounds })
-    @Field((type) => MapBounds, {
+    @Field(() => MapBounds, {
         description:
             'Area geografica en forma rectangular que delimita al estado',
     })
@@ -28,3 +28,4 @@ export class City {
 }
 
 export const CityModel = getModelForClass(City);
+export type CityModelType = typeof CityModel;

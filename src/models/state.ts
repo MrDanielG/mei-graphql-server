@@ -1,6 +1,6 @@
 import { City } from '@models/city';
 import { MapBounds } from '@models/mapBounds';
-import { getModelForClass, prop, Ref } from '@typegoose/typegoose';
+import { getModelForClass, prop } from '@typegoose/typegoose';
 import { Field, ID, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'Estado de la republica' })
@@ -21,9 +21,9 @@ export class State {
     })
     bounds: MapBounds;
 
-    @prop({ ref: () => 'City', default: [] })
-    // @Field(() => [City])
-    cities: Ref<City>[];
+    @prop({ type: () => [String] })
+    @Field(() => [City], { description: 'List of cities from this state' })
+    cities: string[];
 
     @prop({ default: false })
     @Field({
