@@ -1,5 +1,6 @@
 import { ContextFactory } from '@middlewares/context';
 import { CityResolver } from '@resolvers/city.resolver';
+import { SchoolResolver } from '@resolvers/school.resolver';
 import { StateResolver } from '@resolvers/state.resolver';
 import { UserResolver } from '@resolvers/user.resolver';
 import { ApolloServer } from 'apollo-server-express';
@@ -20,7 +21,12 @@ export class SchemaService {
         await this.db.start();
 
         const schema = await buildSchema({
-            resolvers: [UserResolver, StateResolver, CityResolver],
+            resolvers: [
+                UserResolver,
+                StateResolver,
+                CityResolver,
+                SchoolResolver,
+            ],
             container: { get: (theClass) => container.resolve(theClass) },
         });
 
