@@ -13,7 +13,7 @@ export class City {
     name: string;
 
     @prop({ type: () => String })
-    @Field(() => State, { description: 'the state where is this city from' })
+    @Field(() => State, { description: 'The state where is this city from' })
     state: string;
 
     @prop({ required: true, type: MapBounds })

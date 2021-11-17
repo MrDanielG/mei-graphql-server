@@ -1,3 +1,5 @@
+import { City } from '@models/city';
+import { State } from '@models/state';
 import { getModelForClass, prop } from '@typegoose/typegoose';
 import { Field, InputType, ObjectType } from 'type-graphql';
 
@@ -25,6 +27,14 @@ export class User {
     @Field()
     @prop()
     picture_url: string;
+
+    @prop({ type: () => String })
+    @Field(() => State, { description: 'The state where this user is from' })
+    state: string;
+
+    @prop({ type: () => String })
+    @Field(() => City, { description: 'The city where this user is from' })
+    city: string;
 }
 
 @InputType({
@@ -45,6 +55,12 @@ export class UserDataInput implements Partial<User> {
 
     @Field({ nullable: false })
     picture_url: string;
+
+    @Field({ nullable: false })
+    state: string;
+
+    @Field({ nullable: false })
+    city: string;
 }
 
 export const UserModel = getModelForClass(User);
