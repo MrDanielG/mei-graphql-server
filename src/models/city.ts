@@ -1,6 +1,6 @@
 import { MapBounds } from '@models/mapBounds';
 import { State } from '@models/state';
-import { getModelForClass, prop, Ref } from '@typegoose/typegoose';
+import { getModelForClass, prop } from '@typegoose/typegoose';
 import { Field, ID, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'Ciudad dentro de un estado de la republica' })
@@ -12,8 +12,9 @@ export class City {
     @Field({ description: 'Nombre del estado' })
     name: string;
 
-    @prop({ ref: 'State' })
-    state?: Ref<State>;
+    @prop({ type: () => String })
+    @Field(() => State, { description: 'the state where is this city from' })
+    state: string;
 
     @prop({ required: true, type: MapBounds })
     @Field(() => MapBounds, {
