@@ -20,7 +20,7 @@ export class QuizResolver {
     constructor(private quizSrv: QuizService) {}
 
     @Query(() => [Quiz])
-    async quizes() {
+    async quizzes() {
         return this.quizSrv.getAll();
     }
 

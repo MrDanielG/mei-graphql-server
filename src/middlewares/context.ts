@@ -5,7 +5,7 @@ import { Quiz } from '@models/quiz';
 import { School } from '@models/school';
 import { State } from '@models/state';
 import { User } from '@models/user';
-import { BaseModelService } from '@services';
+import { BaseModelService, UserService } from '@services';
 import { AnswerService } from '@services/answer.service';
 import { CityService } from '@services/city.service';
 import { QuestionService } from '@services/question.service';
@@ -17,10 +17,11 @@ import { Request, Response } from 'express';
 import { injectable } from 'tsyringe';
 
 export interface Context {
+    usersLoader: DataLoader<string, User>;
     statesLoader: DataLoader<string, State>;
     citiesLoader: DataLoader<string, City>;
     schoolsLoader: DataLoader<string, School>;
-    quizLoader: DataLoader<string, Quiz>;
+    quizzesLoader: DataLoader<string, Quiz>;
     questionsLoader: DataLoader<string, Question>;
     answersLoader: DataLoader<string, Answer>;
     req: Request;
@@ -31,6 +32,7 @@ export interface Context {
 @injectable()
 export class ContextFactory {
     constructor(
+        private userSrv: UserService,
         private stateSrv: StateService,
         private citySrv: CityService,
         private schoolSrv: SchoolService,
@@ -48,6 +50,9 @@ export class ContextFactory {
 
     public createContext(req: Request, res?: Response): Context {
         return {
+            usersLoader: new DataLoader<string, User>(
+                this._createFetcher(this.userSrv)
+            ),
             statesLoader: new DataLoader<string, State>(
                 this._createFetcher(this.stateSrv)
             ),
@@ -57,7 +62,7 @@ export class ContextFactory {
             schoolsLoader: new DataLoader<string, School>(
                 this._createFetcher(this.schoolSrv)
             ),
-            quizLoader: new DataLoader<string, Quiz>(
+            quizzesLoader: new DataLoader<string, Quiz>(
                 this._createFetcher(this.quizSrv)
             ),
             questionsLoader: new DataLoader<string, Question>(

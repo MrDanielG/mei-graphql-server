@@ -20,10 +20,10 @@ export class Answer {
     description: 'An Answer to a Question',
 })
 export class AnswerDataInput implements Partial<Answer> {
-    @Field({ nullable: false })
+    @Field()
     label: string;
 
-    @Field(() => CarreerArea, { nullable: false })
+    @Field(() => CarreerArea)
     value: CarreerArea;
 }
 

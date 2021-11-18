@@ -64,7 +64,7 @@ export class QuestionResolver {
     @FieldResolver()
     async quiz(@Root() question: DocumentType<Question>, @Ctx() ctx: Context) {
         const quizId = question.quiz.toString() || '';
-        const quiz = await ctx.quizLoader.load(quizId);
+        const quiz = await ctx.quizzesLoader.load(quizId);
         return quiz;
     }
 

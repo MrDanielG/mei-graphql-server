@@ -27,13 +27,13 @@ export class Question {
     description: 'Partial user data used as query or mutation input.',
 })
 export class QuestionDataInput implements Partial<Question> {
-    @Field({ nullable: false })
+    @Field()
     label: string;
 
-    @Field(() => [String], { nullable: false })
+    @Field(() => [String])
     answers: string[];
 
-    @Field({ nullable: false })
+    @Field()
     quiz: string;
 }
 
