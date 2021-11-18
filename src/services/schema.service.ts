@@ -8,6 +8,7 @@ import { SchoolResolver } from '@resolvers/school.resolver';
 import { StateResolver } from '@resolvers/state.resolver';
 import { UserResolver } from '@resolvers/user.resolver';
 import { UserQuizResolver } from '@resolvers/userQuiz.resolver';
+import { UserRecomResolver } from '@resolvers/userRecom.resolver';
 import { ApolloServer } from 'apollo-server-express';
 import express, { Express } from 'express';
 import { createServer } from 'http';
@@ -36,6 +37,7 @@ export class SchemaService {
                 QuestionResolver,
                 AnswerResolver,
                 UserQuizResolver,
+                UserRecomResolver,
             ],
             container: { get: (theClass) => container.resolve(theClass) },
         });

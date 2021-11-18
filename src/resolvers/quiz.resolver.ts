@@ -63,8 +63,8 @@ export class QuizResolver {
 
     @FieldResolver()
     async questions(@Root() quiz: DocumentType<Quiz>, @Ctx() ctx: Context) {
-        const questionsLoader = ctx.questionsLoader;
         if (!quiz.questions) return 0;
+        const questionsLoader = ctx.questionsLoader;
         const questions = await questionsLoader.loadMany(quiz.questions);
         return questions;
     }
