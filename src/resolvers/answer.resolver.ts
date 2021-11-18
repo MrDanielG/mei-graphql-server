@@ -45,7 +45,7 @@ export class AnswerResolver {
     }
 
     @Mutation(() => Int)
-    async delUserByLabel(@Arg('label') label: string): Promise<number> {
+    async delAnswerByLabel(@Arg('label') label: string): Promise<number> {
         const res = await this.answerSrv.delWhere({ label });
         return res.deletedCount || 0;
     }
